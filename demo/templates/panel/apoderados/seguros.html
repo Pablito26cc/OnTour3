@@ -1,0 +1,16 @@
+{% extends "demo/base.html" %}
+{% block content %}
+<h2>Seguros Contratados</h2>
+<table>
+    <tr>
+        <th>Tipo</th>
+        <th>Fecha Contratado</th>
+    </tr>
+    {% for seguro in seguros %}
+    <tr>
+        <td>{{ seguro.tipo }}</td>
+        <td>{{ seguro.fecha_contratado }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

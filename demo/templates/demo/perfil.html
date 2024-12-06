@@ -1,0 +1,9 @@
+{% extends "demo/base.html" %}
+{% load static %}
+{%block content %}
+
+<link rel="stylesheet" href={% static "css/style_12.css" %}>
+
+<h1>Este es el perfil del usuario {{user.username}} </h1>
+
+{% endblock %}

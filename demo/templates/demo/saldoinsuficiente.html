@@ -1,0 +1,13 @@
+{% extends "demo/base.html" %}
+{% block content %}
+{% load static %}
+
+    <link rel="stylesheet" href={% static "css/style_14.css" %}>
+
+<div class="message-box">
+    <h1>Saldo Insuficiente</h1>
+    <p>Lo sentimos, no tienes saldo suficiente para completar la transacción.</p>
+    <p>Por favor, verifica tu información de pago e intenta nuevamente.</p>
+</div>
+
+{% endblock %}

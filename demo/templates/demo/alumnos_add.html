@@ -1,0 +1,48 @@
+{% extends "demo/base.html" %}
+
+{%block content %}
+{% load static %}
+<link rel="stylesheet" href={% static "css/style_2.css" %}>
+
+
+    <div style=" text-align: center;">
+        <h2>Datos Postulantes</h2><br>
+<div id="idMensajes">
+    {% if mensaje %}
+    {{mensaje}}
+    {% endif %}
+</div>
+
+<main class="products container">
+    <div class="container" >
+    <form action="{% url 'alumnosAdd' %}" method="POST">
+                    {% csrf_token %}
+
+                    <pre >Rut:                <input type="text" name="rut" required ></pre>
+                    <pre >Nombre:             <input type="text" name="nombre" required ></pre>
+                    <pre >Apellido P.:        <input type="text" name="paterno" required ></pre>
+                    <pre >Apellido M.:        <input type="text" name="materno" required ></pre>
+                    <br>
+                    <pre >Fecha Nac.:            <input type="date" name="fechaNac" required ></pre>
+                    <br>
+                    <pre >Genero                 <select name="genero" required > 
+
+                        {% for genero in generos %}
+                        <option value="{{genero.id_genero}}">{{genero.genero}}</option>
+                        {% endfor %}
+                    </select></pre>
+                    <pre>Celular:            <input type="text" name="telefono" required ></pre>
+                    <br>
+                    <pre >Email:              <input type="mail" name="email" required ></pre>
+                    <br>
+                    <pre >Direccion:         <input type="text" name="direccion"  ></pre>
+
+<br><br>
+                    <input type="submit" name="opcion" value="Agregar" required >
+
+                </form> <br><br>
+
+            </div>
+            </main>    
+
+    {% endblock %}

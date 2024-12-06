@@ -1,0 +1,37 @@
+{% extends "demo/base.html" %}
+
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href={% static "css/style_7.css" %}>
+
+{% if user.is_staff %}
+<h1>Bienvenido, usted es un:</h1>
+<br>
+<ol style="text-align: center;">
+    {% for e in users %}
+    <li style="text-align: center;">{{ e }}</li>
+    {% endfor %}
+</ol>
+<br><br>
+
+<div class="container1">
+    <form action="" method="POST" id="form">
+        <div class="form">
+            <br><br>
+            <p style="font-size: 25px;">Conozca los postulantes.</p>
+        </div>
+    </form>
+    <!-- Botón para ver postulantes -->
+    {% csrf_token %}
+    <div class="btn-container">
+        <a href="{% url 'crud' %}">
+            <button class="btn btn-info">Postulantes</button>
+        </a>
+    </div>
+</div>
+{% else %}
+<h1>Este usuario no trabaja aquí.</h1>
+{% endif %}
+
+{% endblock %}

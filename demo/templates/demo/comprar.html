@@ -1,0 +1,160 @@
+{% extends "demo/base.html" %}
+{% load static %}
+{%block content %}
+
+<link rel="stylesheet" href={% static "css/style_5.css" %}>
+
+    <div class="carrito">
+        <div class="carrito-items">
+            <table class="carrito-items">
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <!-- Los elementos del carrito se agregan dinámicamente desde JavaScript -->
+          
+        </div>
+
+        <div class="carrito-total">
+            <strong>Total: </strong><span class="total-precio">$0</span>
+            <a href="#" onclick="redirigirAPago()">
+                <button class="btn btn-info">Pagar</button>
+            </a>
+        </div>
+        <br>
+
+
+        <br><br>
+    </div>
+
+    <header>
+        <div class="header-content container">
+          <div class="header-txt">
+    
+       </header>
+
+    <main class="products container">
+        <div class="box-container" id="lista-1">
+            <div class="box" >
+                <img src="{% static 'imagenbanda/kendrickl.jpeg' %}" alt="">
+                <div class="product-txt">
+                    <h3>Kendrick Lamar</h3>
+                    <p>Formato en vinilo</p>
+                    <p class="precio">43000</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="2">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="{% static 'imagenbanda/chancho.jpeg' %}" alt="">
+                <div class="product-txt">
+                    <h3>Chancho en Piedra</h3>
+                    <p>Formato en Vinilo</p>
+                    <p class="precio">53000</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="2">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="{% static 'imagenbanda/specials.jpg' %}" alt="">
+                <div class="product-txt">
+                    <h3>The Specials</h3>
+                    <p>Formato en CD</p>
+                    <p class="precio">33000</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="1">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="{% static 'imagenbanda/bloquedepre.png' %}" alt="">
+                <div class="product-txt">
+                    <h3>Bloque Depresivo</h3>
+                    <p>Formato en Cassete</p>
+                    <p class="precio">77000</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="2">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="box" style="display: none;">
+                <img src="{% static 'imagenbanda/bowie.png' %}" alt="">
+                <div class="product-txt">
+                    <h3>David Bowie</h3>
+                    <p>Formato en Cassette</p>
+                    <p class="precio">22000</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="{% static 'imagenbanda/tool1.jpeg' %}" alt="">
+                <div class="product-txt">
+                    <h3>Tool</h3>
+                    <p>Formato en Cassette</p>
+                    <p class="precio">30000</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="1">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="{% static 'imagenbanda/flori.jpeg' %}" alt="">
+                <div class="product-txt">
+                    <h3>La Floripondio</h3>
+                    <p>Formato en CD</p>
+                    <p class="precio">13000</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="2">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="{% static 'imagenbanda/artic.jpeg' %}" alt="">
+                <div class="product-txt">
+                    <h3>Arctic Monkeys</h3>
+                    <p>Formato en Cassette</p>
+                    <p class="precio">18000</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="{% static 'imagenbanda/post.jpeg' %}" alt="">
+                <div class="product-txt">
+                    <h3>Post Malone</h3>
+                    <p>Formato en Cassette</p>
+                    <p class="precio">15000</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="3">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="{% static 'imagenbanda/metallica.jpeg' %}" alt="">
+                <div class="product-txt">
+                    <h3>Metallica</h3>
+                    <p>Calidad premium</p>
+                    <p class="precio">45000</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="1">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="{% static 'imagenbanda/theb.jpeg' %}" alt="">
+                <div class="product-txt">
+                    <h3>The Beatles</h3>
+                    <p>Formato en Vinilo</p>
+                    <p class="precio">58000</p>
+                    <a href="#" class="agregar-carrito btn-3" data-id="3">Agregar al carrito</a>
+                </div>
+            </div>
+        </div>
+        <!-- Botón para cargar más productos -->
+        <div class="btn-2" id="load-more">Cargar Más</div>
+        <br>
+    </main>
+
+    <br><br>
+
+
+        
+<script src="static/js/load.js"></script>
+<script src="static/js/script.js"></script>
+<script src="static/js/boton.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+
+        {%endblock%}

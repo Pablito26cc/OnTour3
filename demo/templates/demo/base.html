@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>On Tour</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href={% static "/css/main.css" %} />
+		<link rel="stylesheet" href={% static "/css/fontawesome-all.min.css" %} />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css" integrity="sha512-QfDd74mlg8afgSqm3Vq2Q65e9b3xMhJB4GZ9OcHDVy1hZ6pqBJPWWnMsKDXM7NINoKqJANNGBuVRIpIJ5dogfA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href={% static "css/style_1.css" %}>
+	</head>
+	
+		<body class="homepage is-preload">			
+			
+		<div id="page-wrapper">
+
+			<!-- Header -->
+			<div id="header">
+				<img src="{% static 'img/logo2.png' %}" alt="" style="height: 200px;">
+								
+				<!-- Logo -->			
+					<h1><a href="{% url 'index'%}" id="logo">On Tour<em>Turismo Extremo Sur</em></a></h1>
+
+					<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li {%if clase == 'inicio'%} class="current" {%endif%}><a href="/">Inicio</a></li>
+							<li>
+								<a href="#">Productos</a>
+								<ul>
+									<li><a href="{% url 'vinilo'%}">Vinilos</a></li>
+									<li><a href="{% url 'cd'%}">CD</a></li>
+									<li><a href="{% url 'cassette'%}">Cassette</a></li>
+									<li><a href="{% url 'comprar'%}">Todo</a></li>
+								</ul>
+							</li>
+							<li {%if clase == 'trabaja'%} class="current" {%endif%}><a href="{% url 'trabaja'%}">Trabaja Aquí</a></li>
+							<li {%if clase == 'contactanos'%} class="current" {%endif%}><a href="{% url 'contactanos'%}">Contactanos</a></li>
+							<li {%if clase == 'galeria'%} class="current" {%endif%}><a href="{% url 'galeria'%}">Galeria</a></li>
+							
+							{% if user.is_authenticated %}
+								<li>
+									<a href="#">Panel de Usuario</a>
+									<ul>
+										<li>
+											<a href="#">Apoderados</a>
+											<ul>
+												<li><a href="{% url 'estado_cuenta_apoderado' %}">Estado de Cuenta</a></li>
+												<li><a href="{% url 'deposito_individual' %}">Registrar Depósito</a></li>
+												<li><a href="{% url 'seguros_apoderado' %}">Seguros Contratados</a></li>
+												<li><a href="{% url 'progreso_meta' %}">Progreso Financiero</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="#">Representantes del Curso</a>
+											<ul>
+												<li><a href="{% url 'deposito_colectivo' %}">Depósitos Colectivos</a></li>
+												<li><a href="{% url 'reporte_financiero_curso' %}">Reporte Financiero</a></li>
+												<li><a href="{% url 'comunicacion_ejecutivo' %}">Comunicación con Ejecutivo</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="#">Ejecutivos de la Agencia</a>
+											<ul>
+												<li><a href="{% url 'gestion_contratos' %}">Gestión de Contratos</a></li>
+												<li><a href="{% url 'seguimiento_depositos' %}">Seguimiento de Depósitos</a></li>
+												<li><a href="{% url 'informacion_seguros' %}">Información de Seguros</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">{{ user.username }}</a>
+									<ul>
+										<li><a href="{% url 'perfil' %}">Mi Perfil</a></li>
+										<form id="logoutForm" action="{% url 'logout' %}" method="post" class="navbar-right">
+											{% csrf_token %}
+											<button type="submit" class="btn btn-danger">Logout</button>
+										</form>
+									</ul>
+								</li>
+							{% else %}
+								<li><a href="{% url 'login' %}">Login</a></li>
+								<li><a href="{% url 'registro' %}">Registro</a></li>
+							{% endif %}
+						</ul>
+					</nav>
+					
+			</div>
+		</div>
+
+                {% block content %}{% endblock %}
+
+
+
+            <!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<section class="col-5">
+								<h3>Links to Stuff</h3>
+								<ul class="links">
+									<li><a href="#">Mattis et quis rutrum</a></li>
+									<li><a href="#">Suspendisse amet varius</a></li>
+									<li><a href="#">Sed et dapibus quis</a></li>
+									<li><a href="#">Rutrum accumsan dolor</a></li>
+									<li><a href="#">Mattis rutrum accumsan</a></li>
+									<li><a href="#">Suspendisse varius nibh</a></li>
+									<li><a href="#">Sed et dapibus mattis</a></li>
+								</ul>
+							</section>
+							<section class="col-5">
+								<h3>More Links to Stuff</h3>
+								<ul class="links">
+									<li><a href="#">Duis neque nisi dapibus</a></li>
+									<li><a href="#">Sed et dapibus quis</a></li>
+									<li><a href="#">Rutrum accumsan sed</a></li>
+									<li><a href="#">Mattis et sed accumsan</a></li>
+									<li><a href="#">Duis neque nisi sed</a></li>
+									<li><a href="#">Sed et dapibus quis</a></li>
+									<li><a href="#">Rutrum amet varius</a></li>
+								</ul>
+							</section>
+							<section class="social-media">
+								<h3>Social Media</h3>
+								<!-- Icons -->
+								<ul class="icons">
+									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+									<li><a href="#" class="icon brands fa-google-plus-g"><span class="label">Google+</span></a></li>
+								</ul>
+							</section>
+						</div>
+					</div>
+
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">On Tour</a></li>
+							</ul>
+						</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src={% static "js/jquery.min.js" %}></script>
+			<script src={% static "js/jquery.dropotron.min.js"%}></script>
+			<script src={% static "js/browser.min.js"%}></script>
+			<script src={% static "js/breakpoints.min.js"%}></script>
+			<script src={% static "js/util.js"%}></script>
+			<script src={% static "js/main.js"%}></script>
+			<script src={% static "js/audio.js"%}></script>
+
+	</body>
+</html>
