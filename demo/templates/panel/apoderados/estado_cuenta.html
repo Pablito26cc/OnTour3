@@ -1,20 +1,53 @@
 {% extends "demo/base.html" %}
+
 {% block content %}
-<h2>Estado de Cuenta</h2>
-<p><strong>Total Depositado:</strong> {{ total_apoderado }}</p>
-<p><strong>Total Colectivo:</strong> {{ total_colectivo }}</p>
-<table>
-    <tr>
-        <th>Fecha</th>
-        <th>Curso</th>
-        <th>Monto</th>
-    </tr>
-    {% for deposito in depositos %}
-    <tr>
-        <td>{{ deposito.fecha }}</td>
-        <td>{{ deposito.curso.nombre }}</td>
-        <td>{{ deposito.monto }}</td>
-    </tr>
-    {% endfor %}
-</table>
+<h2 class="text-center my-4">Estado de Cuenta</h2>
+
+<!-- Cargar CSS de Bootstrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+<div class="container">
+    <!-- Selección de Fecha -->
+    
+
+    <!-- Información Total Depositado y Total Colectivo -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <p><strong>Total Depositado:</strong> {{ total_apoderado }}</p>
+        </div>
+        <div class="col-md-6">
+            <p><strong>Total Colectivo:</strong> {{ total_colectivo }}</p>
+        </div>
+    </div>
+
+    <!-- Tabla de Depósitos -->
+    <form method="get" action="">
+        <div class="form-row align-items-center mb-4">
+            <div class="col-auto">
+                <label for="fecha" class="sr-only">Fecha</label>
+                <input type="date" class="form-control mb-2" id="fecha" name="fecha" value="{{ request.GET.fecha }}">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2">Filtrar</button>
+            </div>
+        </div>
+    </form>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Monto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for deposito in depositos %}
+            <tr>
+                <td>{{ deposito.fecha }}</td>
+                <td>{{ deposito.curso.nombre }}</td>
+                <td>{{ deposito.monto }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

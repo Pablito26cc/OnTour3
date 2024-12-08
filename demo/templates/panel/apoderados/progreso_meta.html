@@ -1,6 +1,20 @@
 {% extends "demo/base.html" %}
+
 {% block content %}
-<h2>Progreso Financiero</h2>
-<p><strong>Progreso Individual:</strong> {{ total_apoderado }}</p>
-<p><strong>Progreso Colectivo:</strong> {{ total_colectivo }}</p>
+    <h2 class="text-center my-4">Progreso Financiero</h2>
+
+    <!-- Cargar CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <div class="container">
+        <!-- Información de Progreso Financiero -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <p><strong>Progreso Individual:</strong> {{ total_apoderado }}</p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Progreso Colectivo:</strong> {{ total_colectivo }}</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}
